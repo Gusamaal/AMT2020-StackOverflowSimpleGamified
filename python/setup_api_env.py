@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     # ------------------------- import environement value ------------------------ #
 
-    env_path = Path('..') / '.env'
+    env_path = Path('../src/test/resources') / '.env'
     load_dotenv(dotenv_path=env_path)
 
     # ------------------------------ Prepare payload ----------------------------- #
