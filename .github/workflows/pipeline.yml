@@ -65,5 +65,5 @@ jobs:
       - name: Tag and push Docker image (includes mvn clean package)
         run: |
              echo ${{secrets.DEV_ZARETTI_PAT}} | docker login ghcr.io --username dev-zaretti --password-stdin
-             docker tag dev-zaretti/stackoverflowsimpleversion/openliberty ghcr.io/dev-zaretti/stackoverflowsimpleversion/openliberty
-             docker push ghcr.io/gusamaal/AMT2020-StackOverflowSimpleGamified/StackOverflowSimpleGamified:latest
+             docker tag ghcr.io/gusamaal/amt2020-stackoverflowsimplegamified/stackoverflowsimplegamified:latest
+             docker push ghcr.io/gusamaal/stackoverflowsimplegamified/StackOverflowSimpleGamified:latest
