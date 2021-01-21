@@ -7,86 +7,37 @@
 | Sacha Perdrizat   | sacha.perdrizat@heig-vd.ch   |
 | Maximilian Vogel  | maximilian.vogel@heig-vd.ch  |
 
+## Linked applications and depedencies
 
+StackOwerflow gamification engine project : see [`Gamification-Engine-AMT`](https://github.com/Gusamaal/Gamification-Engine-AMT)
 
 ## Introduction
 
 The aim of this project is to link a simplified version of the famous StackOverflow website with a Gamification API which we both made as a team during the AMT 2020 class at HEIG-VD. We will be using concepts learned during that class. This is the final part of this semester's project.
 
+## Documentation
+More documentation for this repository can be found in the [`docs`](docs)
+directory.
 
-## Technical details
+### Getting started see the [`docs`](docs) directory.
 
-Our application is built over the Jakarta EE standard (Java EE). We are using the following tools/technology to build this project :
 
-| Component                     | Name                                                      | Version      |
-| ----------------------------- | --------------------------------------------------------- | ------------ |
-| Jakarta EE Application Server | [Open Liberty](openliberty.io/)                           | __>=3.2__    |
-| IDE                           | [IntelliJ Idea Ultimate](https://www.jetbrains.com/idea/) | __>=2020.2__ |
-| Build/dependency Manager      | [Maven](https://maven.apache.org/)                        | __>= 3.6__   |
-| E2E testing tools             | [CodeceptJS](codecept.io/) (with **Puppeteer**)           | __>=2.6__    |
-| Unit Testing Framework        | [Junit](https://junit.org/junit5/)                        | __>= 5.6__   |
-| Integration Testing tool      | [Arquilian](http://arquillian.org/)                       | __>= 1.1__   |
-| Containerization tools        | [Docker](https://www.docker.com/)                         | __>= 19.03__ |
 
-## Run this code (for developpement)
+## License
 
-```bash
-# clone this repository
-$ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
+The code is licensed under the **MIT License** - see the
+[`LICENSE`](docs/LICENSE) file for details.
 
-$ cd AMT2020-StackOverflowSimpleVersion
+The content is licensed under the **Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+License** - see the [Creative Commons](https://creativecommons.org/licenses/by-nc-sa/4.0/)website for details.
 
-$ mvn liberty:run
-```
+## Contributing
 
-## Run this code (for production)
+Thank you for considering contributing to Gamification engine amt! Here is some help
+to get you started to contribute to the project:
 
-```bash
-# clone this repository
-$ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
-
-$ cd AMT2020-StackOverflowSimpleVersion/docker
-
-$ ./run.sh
-```
-
-You can then visit the http://localhost:9081 page on your browser.
-
-## Docker Image
-
-A workflow launches the tests and commands to validate your push or your merge request. If it pasess the test and build steps then a docker image of openliberty will be created on https://github.com/dev-zaretti?tab=packages.
-
-You can pull it with this command : 
-
-__IMPORTANT: this image is unexploitable without a correct database__ 
-
-```bash
-$ docker pull ghcr.io/dev-zaretti/stackoverflowsimpleversion/openliberty:latest
-```
-
-Or directly run this container with the following command :
-
-```bash
-$ docker run -it -p 9080:9080 ghcr.io/dev-zaretti/stackoverflowsimpleversion/openliberty:latest
-```
-
-## Resources
-
-All other resources (Mockup, diagram, ...) can be found on Google Drive :
-
-https://drive.google.com/drive/folders/1nZA1BNT6IPRA33JpV597dQgbJ2IBXqPw?usp=sharing
-
-## Known Issues
-
-Some bugs and failures occur in the actual project :
-
-- E2E tests fail if they are all launched at the same time.
-- Integration test for questions fails in the pipeline sometimes.
-
-## Integration with the Gamification Engine API
-
-Three things need to be done in order to link both of our previous projects :
-
-- Create a script-enabled launch of the API, the databases and finally the StackOverflow application that links the API and the app.
-- The StackOverflow application sends HTTP POST requests to the API informing the API of user events that impact the gamification engine. 
-- The StackOverflow application sends HTTP GET requests to the API when it wants to display gamification information concerning one or all of the app's user(s).
+1. Please start by reading our code of conduct available in the
+   [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md) file.
+2. All contribution information is available in the
+   [`CONTRIBUTING.md`](docs/CONTRIBUTING.md) file.
