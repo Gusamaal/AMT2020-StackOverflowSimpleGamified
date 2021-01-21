@@ -86,7 +86,7 @@ NB: we assume that you have already a python3 installation
 
 ```bash
 $ cp .envexample src/test/resources/.env
-$ cp .envexample ./docker/topologie/stackoverflow_prod/.env.gamification
+$ cp .envexample ./docker/topologies/stackoverflow_prod/.env.gamification
 
 $ cd python
 
