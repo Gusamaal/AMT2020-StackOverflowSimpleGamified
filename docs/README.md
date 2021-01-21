@@ -18,6 +18,9 @@ Our application is built over the Jakarta EE standard (Java EE). We are using th
 # clone this repository
 $ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
 
+# start developpement database 
+$ docker-compose -f docker/topologies/stackoverflow/docker-compose.yml up -d db
+
 $ cd AMT2020-StackOverflowSimpleVersion
 
 $ mvn liberty:run
@@ -29,29 +32,28 @@ $ mvn liberty:run
 # clone this repository
 $ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
 
-$ cd AMT2020-StackOverflowSimpleVersion/docker
-
-$ ./run.sh
+$ docker-compose -f docker/topologies/stackoverflow_prod/docker-compose.yml up
 ```
 
 You can then visit the http://localhost:9081 page on your browser.
 
 ## Docker Image
 
-A workflow launches the tests and commands to validate your push or your merge request. If it pasess the test and build steps then a docker image of openliberty will be created on https://github.com/dev-zaretti?tab=packages.
-
-You can pull it with this command : 
+A workflow launches the tests and commands to validate your push or your merge request. If it pasess the test and build steps then a docker image of openliberty will be created on ['our registry'](https://github.com/orgs/Gusamaal/packages).
 
 __IMPORTANT: this image is unexploitable without a correct database__ 
 
+You can pull it with this command : 
+
+
 ```bash
-$ docker pull ghcr.io/dev-zaretti/stackoverflowsimpleversion/openliberty:latest
+$ docker pull ghcr.io/gusamaal/amt2020-stackoverflowsimplegamified/stackoverflowsimpleversiongamified:latest
 ```
 
 Or directly run this container with the following command :
 
 ```bash
-$ docker run -it -p 9080:9080 ghcr.io/dev-zaretti/stackoverflowsimpleversion/openliberty:latest
+$ docker run -it -p 9080:9080 ghcr.io/gusamaal/amt2020-stackoverflowsimplegamified/stackoverflowsimpleversiongamified:latest
 ```
 
 ## Resources
@@ -60,13 +62,6 @@ All other resources (Mockup, diagram, ...) can be found on Google Drive :
 
 https://drive.google.com/drive/folders/1nZA1BNT6IPRA33JpV597dQgbJ2IBXqPw?usp=sharing
 
-## Known Issues
-
-Some bugs and failures occur in the actual project :
-
-- E2E tests fail if they are all launched at the same time.
-- Integration test for questions fails in the pipeline sometimes.
-
 ## Integration with the Gamification Engine API
 
 Three things need to be done in order to link both of our previous projects :
@@ -74,3 +69,53 @@ Three things need to be done in order to link both of our previous projects :
 - Create a script-enabled launch of the API, the databases and finally the StackOverflow application that links the API and the app.
 - The StackOverflow application sends HTTP POST requests to the API informing the API of user events that impact the gamification engine. 
 - The StackOverflow application sends HTTP GET requests to the API when it wants to display gamification information concerning one or all of the app's user(s).
+
+## Quick Deploy the whole project
+
+### Launch the gamification engine 
+
+```bash
+
+$ docker-compose -f docker/topologies/gamification-engine/docker-compose.yml up -d
+
+```
+
+### setup and run the python api config script
+
+NB: we assume that you have already a python3 installation
+
+```bash
+$ cp .envexample src/test/resources/.env
+$ cp .envexample ./docker/topologie/stackoverflow_prod/.env.gamification
+
+$ cd python
+
+# create virtual environement
+$ python3 -m venv venv
+
+# start venv
+$ source /venv/bin/activate
+
+# install requirement
+$ pip install -r requirements.txt
+
+# start the script
+
+$ python setup_api_env.py
+
+```
+
+The script will send you an API-KEY copy it in your clipboard and paste it in the dot env configuration
+
+```conf
+API_HOST=localhost
+API_PORT=8086
+
+API_KEY=<Place your API key HERE>
+```
+
+### launch stackoverflow
+
+```
+$ docker-compose -f ./docker/topologies/stackoverflow_prod/docker-compose.yml up --build
+```
