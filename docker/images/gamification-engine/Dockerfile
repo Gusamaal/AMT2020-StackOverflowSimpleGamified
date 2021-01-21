@@ -1,4 +1,4 @@
-FROM ghcr.io/gusamaal/gamification-engine-amt/gamificationenginetest:latest
+FROM ghcr.io/gusamaal/gamification-engine-amt/gamificationengine:latest
 
 
 
