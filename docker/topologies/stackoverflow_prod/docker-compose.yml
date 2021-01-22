@@ -1,0 +1,22 @@
+version: '3'
+services:
+  openliberty:
+    image: ghcr.io/gusamaal/amt2020-stackoverflowsimplegamified/stackoverflowsimpleversiongamified
+    ports:
+     - "9081:9080"
+     - "9444:9443"
+    env_file: 
+     - .env.gamification
+  db:
+    image: dev-zaretti/stackoverflowsimpleversion/postgresql
+    build: ../../images/postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+networks:
+  default: 
+    external:
+      name: reunion
