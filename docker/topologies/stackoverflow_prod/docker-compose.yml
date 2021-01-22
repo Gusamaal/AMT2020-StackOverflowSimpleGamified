@@ -9,10 +9,14 @@ services:
      - .env.gamification
   db:
     image: dev-zaretti/stackoverflowsimpleversion/postgresql
-    build: ./postgresql
+    build: ../../images/postgresql
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+networks:
+  default: 
+    external:
+      name: reunion
