@@ -72,7 +72,7 @@ Three things need to be done in order to link both of our previous projects :
 
 ## Quick Deploy the whole project
 
-In preamble we need to setup an external docker network to allow our topologie to communicate easly
+In preamble we need to setup an external docker network to allow our 2 topologies to communicate easly
 
 ```bash
 $ docker network create reunion
@@ -115,6 +115,8 @@ $ deactivate
 
 The script will send you an API-KEY copy it in your clipboard and paste it in the dot env configuration
 
+NB: change this value with the service name "GamificationAPI for the env in the ``./docker/topologies/stackoverflow_prod/`` folder
+
 ```conf
 API_HOST=localhost
 API_PORT=8086
@@ -127,3 +129,5 @@ API_KEY=<Place your API key HERE>
 ```
 $ docker-compose -f ./docker/topologies/stackoverflow_prod/docker-compose.yml up --build
 ```
+
+And Access it via http://localhost:9081
