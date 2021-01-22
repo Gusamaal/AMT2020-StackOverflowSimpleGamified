@@ -115,11 +115,23 @@ $ deactivate
 
 The script will send you an API-KEY copy it in your clipboard and paste it in the dot env configuration
 
-NB: change this value with the service name "GamificationAPI for the env in the ``./docker/topologies/stackoverflow_prod/`` folder
+#### the dev env file
+
+in  ``src/main/resources/``
 
 ```conf
 API_HOST=localhost
 API_PORT=8086
+
+API_KEY=<Place your API key HERE>
+```
+#### The production env
+
+in ``./docker/topologies/stackoverflow_prod/``
+
+```conf
+API_HOST=GamificationAPI
+API_PORT=8080
 
 API_KEY=<Place your API key HERE>
 ```
