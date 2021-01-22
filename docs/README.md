@@ -72,6 +72,12 @@ Three things need to be done in order to link both of our previous projects :
 
 ## Quick Deploy the whole project
 
+In preamble we need to setup an external docker network to allow our topologie to communicate easly
+
+```bash
+$ docker network create reunion
+```
+
 ### Launch the gamification engine 
 
 ```bash
@@ -100,8 +106,10 @@ $ source /venv/bin/activate
 $ pip install -r requirements.txt
 
 # start the script
-
 $ python setup_api_env.py
+
+# leave the venv
+$ deactivate
 
 ```
 
