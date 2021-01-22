@@ -12,30 +12,6 @@ Our application is built over the Jakarta EE standard (Java EE). We are using th
 | Integration Testing tool      | [Arquilian](http://arquillian.org/)                       | __>= 1.1__   |
 | Containerization tools        | [Docker](https://www.docker.com/)                         | __>= 19.03__ |
 
-## Run this code (for developpement)
-
-```bash
-# clone this repository
-$ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
-
-# start developpement database 
-$ docker-compose -f docker/topologies/stackoverflow/docker-compose.yml up -d db
-
-$ cd AMT2020-StackOverflowSimpleVersion
-
-$ mvn liberty:run
-```
-
-## Run this code (for production)
-
-```bash
-# clone this repository
-$ git clone git@github.com:Sinyks/AMT2020-StackOverflowSimpleVersion.git
-
-$ docker-compose -f docker/topologies/stackoverflow_prod/docker-compose.yml up
-```
-
-You can then visit the http://localhost:9081 page on your browser.
 
 ## Docker Image
 
